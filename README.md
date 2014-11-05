@@ -24,7 +24,9 @@ docker run -d -p 3000:3000 --name=spider-thu --link mongodb:mongodb sparkedsys/s
 ```
 
 ## Attach
+```
 docker exec -it spider-thu bash
+```
 
 ## boot2docker IP address
 ```
