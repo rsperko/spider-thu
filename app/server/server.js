@@ -6,11 +6,10 @@ var mongoose = require("mongoose");
 
 app.use(bodyParser()); 						// pull information from html in POST
 app.use(cors());
-app.use('/static', express.static(__dirname + '/public'));
 
 var mongo_host = process.env.MONGODB_PORT_27017_TCP_ADDR || 'localhost';
 var mongo_port = process.env.MONGODB_PORT_27017_TCP_PORT || '27017';
-mongoose.connect('mongodb://' + mongo_host + ':' + mongo_port + '/spider-thu-mean');
+mongoose.connect('mongodb://' + mongo_host + ':' + mongo_port + '/spider-thu');
 
 var Product = mongoose.model('Product', {name: String});
 
@@ -26,5 +25,7 @@ app.post("/api/add", function(req, res) {
     res.send();
   });
 });
+
+app.use(express.static('public'));
 
 app.listen(3000);
