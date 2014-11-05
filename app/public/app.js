@@ -1,6 +1,6 @@
-var spider = angular.module("spider-thu-mean", []);
+var spider_thu = angular.module("spider-thu", []);
 
-spider.controller("AppCtrl", function($http, $location) {
+spider_thu.controller("AppCtrl", function($http, $location) {
   var app = this;
   var url = "http://" + $location.host() + ":3000/api";
 
