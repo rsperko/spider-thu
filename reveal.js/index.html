@@ -65,33 +65,119 @@
 				<section data-markdown>
 					<script type="text/template">
 						## What is Docker
+						* This is the future!
+						* Containers
+						* Images
 					</script>
 				</section>
 
 				<section data-markdown>
 					<script type="text/template">
 						## Problems Docker Solves
+						* Dependency Management
+						* Deployment
+						* Sandboxing
 					</script>
 				</section>
 
 				<section data-markdown>
 					<script type="text/template">
 						## Advantages of Docker
+						* Isolation
+						* Provisioning Speed
+						* Reduced Resources
+						* Consistent Interaction
 					</script>
 				</section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Demo
-					</script>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Demo
+							* Install MongoDB
+							* Build Application Base Images
+							* Build Application
+							* Notes
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Install MongoDB
+							To start a MongoDB instance without an external volume mounted:
+```
+docker run -d \
+-p 27017:27017 \
+-p 28017:28017 \
+--name mongodb \
+dockerfile/mongodb
+```
+
+With an external volume:
+```
+docker run -d \
+-p 127017:27017 \
+-p 128017:28017 \
+-v /docker_volumes/mongodb/data:/data/db \
+--name mongodb \
+dockerfile/mongodb
+```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Build Application Base Images
+							By building up the base image first it makes it much faster to build the application on it. This Dockerfile starts with a bare Debian image installs curl and build-essential, then installs nodejs and many of the common node modules into an /app directory. That is where our application should be installed to take advantage of the pre-building.
+```
+docker build -t sparkedsys/mean-base .
+```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Build Application
+Two steps here, one to build the application image and another to start the application container. Note the --link argument which causes it to be linked to the already running MongoDB container.
+```
+docker build -t sparkedsys/spider-thu .
+docker run -d \
+-p 3000:3000 \
+--name=spider-thu \
+--link mongodb:mongodb \
+sparkedsys/spider-thu
+```						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Notes
+							* Obtain the IP Address for boot2docker
+```
+boot2docker ip 
+```
+							* Attaching for Troubleshooting
+```
+docker exec -it spider-thu bash
+```
+						</script>
+					</section>
 				</section>
 
 				<section data-markdown>
 					<script type="text/template">
 						## Recent Docker Announcements
+						### Microsoft
+						* https://blog.docker.com/2014/10/docker-microsoft-partner-distributed-applications/
+						* http://www.wired.com/2014/10/microsoft-windows-will-run-docker/
+						* http://www.zdnet.com/docker-container-support-coming-to-microsofts-next-windows-server-release-7000034708/?s_cid=e539&ttag=e539&ftag=TRE17cfd61
+						### Google
+						* http://techcrunch.com/2014/11/04/google-launches-managed-service-for-running-docker-based-applications-on-its-cloud-platform/?utm_source=twitterfeed&utm_medium=twitter
 					</script>
 				</section>
 
+				<section data-markdown>
+					<script type="text/template">
+						# Questions and Thank You
+					</script>
+				</section>
 			</div>
 
 		</div>
