@@ -14,7 +14,7 @@ MAINTAINER Rick Sperko
 # Update the sources list
 RUN apt-get update
 
-RUN apt-get -y install build-essential curl
+RUN apt-get -y install build-essential curl procps
 
 # Install Node
 RUN curl -sL https://deb.nodesource.com/setup | bash -

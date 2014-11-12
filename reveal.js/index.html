@@ -105,7 +105,7 @@
 						<script type="text/template">
 							## Install MongoDB
 							To start a MongoDB instance without an external volume mounted:
-```
+```bash
 docker run -d \
 -p 27017:27017 \
 -p 28017:28017 \
@@ -114,7 +114,7 @@ dockerfile/mongodb
 ```
 
 With an external volume:
-```
+```bash
 docker run -d \
 -p 127017:27017 \
 -p 128017:28017 \
@@ -137,7 +137,7 @@ dockerfile/mongodb
 * common node modules 
 
 							into an /app directory. Applications should be installed to that directory.
-```
+```bash
 docker build -t spiderlogic/mean-base .
 ```
 						</script>
@@ -170,8 +170,13 @@ RUN npm install
 						<script type="text/template">
 							## Build Application
 Two steps here, one to build the application image and another to start the application container. Note the --link argument which causes it to be linked to the already running MongoDB container.
-```
+
+build :
+```bash
 docker build -t spiderlogic/spider-thu .
+```
+start container:
+```bash
 docker run -d \
 -p 3000:3000 \
 --name=spider-thu \
@@ -200,15 +205,15 @@ CMD ["/usr/bin/node", "/app/server/server.js"]
 						<script type="text/template">
 							## Notes
 							* Get the environment variables needed to connect to boot2docker
-```
+```bash
 boot2docker shellinit 
 ```
 							* Obtain the IP Address for boot2docker
-```
+```bash
 boot2docker ip 
 ```
 							* Attaching for Troubleshooting
-```
+```bash
 docker exec -it spider-thu bash
 ```
 						</script>
