@@ -66,8 +66,8 @@
 					<script type="text/template">
 						## What is Docker
 						* This is the future!
-						* Containers
 						* Images
+						* Containers
 					</script>
 				</section>
 
@@ -201,6 +201,8 @@ CMD ["/usr/bin/node", "/app/server/server.js"]
 ```
 						</script>
 					</section>
+				</section>
+				<section>
 					<section data-markdown>
 						<script type="text/template">
 							## Notes
@@ -218,6 +220,21 @@ docker exec -it spider-thu bash
 ```
 						</script>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Save/Export
+
+							Save outputs an image for loading
+```bash
+docker save <IMAGE> > /home/save.tar
+```
+
+							Export outputs a container snapshot for importing
+```bash
+docker export <CONTAINER ID> > /home/export.tar
+```
+						</script>
+					</section>
 				</section>
 
 				<section data-markdown>
@@ -229,6 +246,12 @@ docker exec -it spider-thu bash
 						* http://www.zdnet.com/docker-container-support-coming-to-microsofts-next-windows-server-release-7000034708/?s_cid=e539&ttag=e539&ftag=TRE17cfd61
 						### Google
 						* http://techcrunch.com/2014/11/04/google-launches-managed-service-for-running-docker-based-applications-on-its-cloud-platform/?utm_source=twitterfeed&utm_medium=twitter
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						# In the Wild Demo
 					</script>
 				</section>
 
