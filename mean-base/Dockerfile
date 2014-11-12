@@ -2,7 +2,7 @@
 # Dockerfile to build Python WSGI Application Containers
 # Based on Debian
 #
-# sudo docker build -t sparkedsys/mean-base .
+# sudo docker build -t spiderlogic/mean-base .
 ############################################################
 
 # Set the base image to Debian
